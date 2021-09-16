@@ -1,0 +1,13 @@
+prod_job:
+    stage: deploy
+    only:
+        - master
+    
+    before_script:
+        - mkdir -p ~/.ssh
+        - echo -e "$PROD__SSH__KEY" > ~/.ssh/id_rsa
+        - chmod 600 ~/.ssh/id_rsa
+        - '[[ -f /.dockerenv ]] && echo -e "HOST *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+
+    script:
+        - bash deploy.sh
