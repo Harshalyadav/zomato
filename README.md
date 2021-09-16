@@ -80,7 +80,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 Now verify docker installation
 
 ```shell
-sudo docker–compose --version
+docker–compose --version
 ```
 
 ## Run the application
