@@ -7,7 +7,7 @@
 ### SSH to your EC2 instance
 
 ```shell
-ssh -t <your key> ubuntu@<public ip>
+ssh -i <your key> ubuntu@<public ip>
 ```
 
 ### create new app directory
