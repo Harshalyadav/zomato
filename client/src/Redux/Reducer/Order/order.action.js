@@ -3,11 +3,13 @@ import axios from "axios";
 // Redux types
 import { CREATE_ORDER, ORDER_PLACED } from "./order.type";
 
+import { API_URL } from "../../../key";
+
 export const createOrder = (amount) => async (dispatch) => {
   try {
     const order = await axios({
       method: "POST",
-      url: "http://localhost:4000/payments/new",
+      url: `${API_URL}/payments/new`,
       data: { amount },
     });
 
@@ -32,7 +34,7 @@ export const orderPlaced = (cartData) => async (dispatch) => {
       };
       axios({
         method: "POST",
-        url: `http://localhost:4000/order/new`,
+        url: `${API_URL}/order/new`,
         data: { orderDetails },
       });
     });

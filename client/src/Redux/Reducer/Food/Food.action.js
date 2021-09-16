@@ -3,11 +3,13 @@ import axios from "axios";
 // Redux types
 import { GET_FOOD_LIST, GET_FOOD } from "./Food.type";
 
+import { CLIENT_URL, API_URL } from "../../../key";
+
 export const getFood = (foodId) => async (dispatch) => {
   try {
     const Food = await axios({
       method: "GET",
-      url: `http://localhost:4000/food/${foodId}`,
+      url: `${API_URL}/food/${foodId}`,
     });
 
     return dispatch({ type: GET_FOOD, payload: Food.data });
@@ -20,7 +22,7 @@ export const getFoodList = (menuId) => async (dispatch) => {
   try {
     const Menu = await axios({
       method: "GET",
-      url: `http://localhost:4000/menu/list/${menuId}`,
+      url: `${API_URL}/menu/list/${menuId}`,
     });
 
     return dispatch({ type: GET_FOOD_LIST, payload: Menu.data });

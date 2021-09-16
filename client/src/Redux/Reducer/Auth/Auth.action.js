@@ -6,11 +6,13 @@ import { SIGN_IN, SIGN_UP, GOOGLE_AUTH, SIGN_OUT } from "./Auth.type";
 // redux actions
 import { getMyself, clearUser } from "../User/user.action";
 
+import { API_URL, CLIENT_URL } from "../../../key";
+
 export const signIn = (userData) => async (dispatch) => {
   try {
     const User = await axios({
       method: "POST",
-      url: `http://localhost:4000/auth/signin`,
+      url: `${API_URL}/auth/signin`,
       data: { credentials: userData },
     });
 
@@ -42,8 +44,8 @@ export const signOut = () => async (dispatch) => {
   try {
     localStorage.removeItem("zomatoUser");
     clearUser();
-    window.location.href = "http://localhost:3000/delivery";
-    
+    window.location.href = `${CLIENT_URL}/delivery`;
+
     return dispatch({ type: SIGN_OUT, payload: {} });
   } catch (error) {
     return dispatch({ type: "ERROR", payload: error });
@@ -54,7 +56,7 @@ export const signUp = (userData) => async (dispatch) => {
   try {
     const User = await axios({
       method: "POST",
-      url: `http://localhost:4000/auth/signup`,
+      url: `${API_URL}/auth/signup`,
       data: { credentials: userData },
     });
 
